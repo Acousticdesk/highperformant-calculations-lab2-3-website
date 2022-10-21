@@ -37,7 +37,7 @@
                     <h1 class="mt-5">Create Array Now</h1>
                     <p>Just fill in the parameters, click submit and wait for the server to do it's magic 🪄</p>
                 </div>
-                <form class="mt-4 array-parameters-form">
+                <form class="mt-4 array-parameters-form" data-form-prefix="array_parameters_">
                     <fieldset>
                         <legend>Array Parameters</legend>
                         <div class="mb-3 d-flex justify-content-between">
@@ -46,24 +46,24 @@
                                 <input value="10" type="number" id="array_parameters_n" name="array_parameters_n" class="form-control">
                             </div>
                             <div>
-                                <label for="min_value" class="form-label">Min Value</label>
-                                <input value="0" type="number" id="min_value" name="min_value" class="form-control">
+                                <label for="array_parameters_min_value" class="form-label">Min Value</label>
+                                <input value="0" type="number" id="array_parameters_min_value" name="array_parameters_min_value" class="form-control">
                             </div>
                             <div>
-                                <label for="max_value" class="form-label">Max Value</label>
-                                <input value="10" type="number" id="max_value" name="max_value" class="form-control">
+                                <label for="array_parameters_max_value" class="form-label">Max Value</label>
+                                <input value="10" type="number" id="array_parameters_max_value" name="array_parameters_max_value" class="form-control">
                             </div>
                         </div>
                         <div class="mb-3">
                             <div>
-                                <label for="array_parameters_n" class="form-label">Sorting Order</label>
+                                <label class="form-label">Sorting Order</label>
                             </div>
-                            <input class="form-check-input" checked type="radio" name="sorting_order" id="sorting_order_asc">
-                            <label class="form-check-label me-4" for="sorting_order_asc">
+                            <input class="form-check-input" checked type="radio" name="array_parameters_sorting_order" id="array_parameters_sorting_order_asc" value="asc">
+                            <label class="form-check-label me-4" for="array_parameters_sorting_order_asc">
                                 Ascending
                             </label>
-                            <input class="form-check-input" type="radio" name="sorting_order" id="sorting_order_desc">
-                            <label class="form-check-label" for="sorting_order_desc">
+                            <input class="form-check-input" type="radio" name="array_parameters_sorting_order" id="array_parameters_sorting_order_desc" value="desc">
+                            <label class="form-check-label" for="array_parameters_sorting_order_desc">
                                 Descending
                             </label>
                         </div>
@@ -82,7 +82,7 @@
     <footer>
         <div class="container d-flex justify-content-between">
             <a href="#main_router" class="router-link text-decoration-none text-reset">Sorted Random Array</a>
-            <p id="copyright" class="my-0">Made by <a href="mailto:a.kicha@knu.ua">a.kicha@knu.ua</a> in</p>
+            <p id="copyright" class="my-0">Made by <a href="mailto:a.kicha@knu.ua" class="text-reset">a.kicha@knu.ua</a> in</p>
         </div>
     </footer>
     <script src="../build/index.js"></script>
