@@ -1,3 +1,6 @@
+import { createArray } from './array-server-interaction';
+import { CreateFormDTO } from './array-server-interaction/interfaces';
+
 (document.querySelector('form') as HTMLElement).addEventListener('submit', (e) => {
   e.preventDefault()
 
@@ -6,9 +9,7 @@
 
   const formValues = Object.fromEntries(Array.from(formData.entries()).map(([key, value]) => {
     return [key.replace(form.dataset.formPrefix as string, ''), value]
-  }))
+  })) as unknown as CreateFormDTO;
 
-  console.log(formValues);
-
-  // array_parameters_
+  createArray(formValues);
 })
