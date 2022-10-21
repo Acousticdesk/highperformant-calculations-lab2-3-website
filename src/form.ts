@@ -1,7 +1,8 @@
 import { createArray } from './array-server-interaction';
 import { CreateFormDTO } from './array-server-interaction/interfaces';
+import { createLoadingButton } from './loading-button';
 
-(document.querySelector('form') as HTMLElement).addEventListener('submit', (e) => {
+(document.querySelector('form') as HTMLElement).addEventListener('submit', async (e) => {
   e.preventDefault()
 
   const form = e.currentTarget as HTMLFormElement;
@@ -11,5 +12,9 @@ import { CreateFormDTO } from './array-server-interaction/interfaces';
     return [key.replace(form.dataset.formPrefix as string, ''), value]
   })) as unknown as CreateFormDTO;
 
-  createArray(formValues);
+  const loadingButton = createLoadingButton('#submit_btn');
+
+  loadingButton.setLoading();
+
+  await createArray(formValues);
 })
