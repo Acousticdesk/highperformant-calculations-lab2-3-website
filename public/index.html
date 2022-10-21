@@ -6,9 +6,85 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon" href="./favicon.ico">
+    <link rel="stylesheet" href="./styles.css">
     <title>SRA: Create your own Sorted Random Array</title>
 </head>
-<body>
+<body class="d-flex flex-column vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand router-link" href="#main_router">Sorted Random Array</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active router-link" aria-current="page" href="#main_router">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link router-link" href="#about_router">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="my-5 flex-grow-1 flex-shrink-1">
+        <div class="container" id="router_outlet">
+            <div id="main_router">
+                <div class="text-container">
+                    <h1>What is SRA?</h1>
+                    <p>The service helps you create random sorted arrays with N numbers in it</p>
+                    <h1 class="mt-5">Create Array Now</h1>
+                    <p>Just fill in the parameters, click submit and wait for the server to do it's magic 🪄</p>
+                </div>
+                <form class="mt-4 array-parameters-form">
+                    <fieldset>
+                        <legend>Array Parameters</legend>
+                        <div class="mb-3 d-flex justify-content-between">
+                            <div>
+                                <label for="array_parameters_n" class="form-label">N Elements</label>
+                                <input value="10" type="number" id="array_parameters_n" name="array_parameters_n" class="form-control">
+                            </div>
+                            <div>
+                                <label for="min_value" class="form-label">Min Value</label>
+                                <input value="0" type="number" id="min_value" name="min_value" class="form-control">
+                            </div>
+                            <div>
+                                <label for="max_value" class="form-label">Max Value</label>
+                                <input value="10" type="number" id="max_value" name="max_value" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div>
+                                <label for="array_parameters_n" class="form-label">Sorting Order</label>
+                            </div>
+                            <input class="form-check-input" checked type="radio" name="sorting_order" id="sorting_order_asc">
+                            <label class="form-check-label me-4" for="sorting_order_asc">
+                                Ascending
+                            </label>
+                            <input class="form-check-input" type="radio" name="sorting_order" id="sorting_order_desc">
+                            <label class="form-check-label" for="sorting_order_desc">
+                                Descending
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div hidden id="about_router">
+                <div class="text-container">
+                    <h1>About</h1>
+                    <p>SRA is a service created to demonstrate the distributed client-server interaction that handles heavy CPU calculations using multiple threads</p>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container d-flex justify-content-between">
+            <a href="#main_router" class="router-link text-decoration-none text-reset">Sorted Random Array</a>
+            <p id="copyright" class="my-0">Made by <a href="mailto:a.kicha@knu.ua">a.kicha@knu.ua</a> in</p>
+        </div>
+    </footer>
     <script src="../build/index.js"></script>
 </body>
 </html>
