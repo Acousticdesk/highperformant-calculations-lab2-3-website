@@ -1,6 +1,7 @@
 import { createArray } from './array-server-interaction';
 import { CreateFormDTO } from './array-server-interaction/interfaces';
 import { createLoadingButton } from './loading-button';
+import { snakeCaseToCamelCase } from './string';
 
 (document.querySelector('form') as HTMLElement).addEventListener('submit', async (e) => {
   e.preventDefault()
@@ -9,7 +10,9 @@ import { createLoadingButton } from './loading-button';
   const formData = new FormData(form);
 
   const formValues = Object.fromEntries(Array.from(formData.entries()).map(([key, value]) => {
-    return [key.replace(form.dataset.formPrefix as string, ''), value]
+    const keyWithoutPrefix = key.replace(form.dataset.formPrefix as string, '');
+    const newKey = snakeCaseToCamelCase(keyWithoutPrefix);
+    return [newKey, value]
   })) as unknown as CreateFormDTO;
 
   const loadingButton = createLoadingButton('#submit_btn');
@@ -17,4 +20,6 @@ import { createLoadingButton } from './loading-button';
   loadingButton.setLoading();
 
   await createArray(formValues);
+
+  loadingButton.setLoadingFinished();
 })
