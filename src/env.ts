@@ -1,3 +1,4 @@
 export default {
-  apiBaseUrl: 'http://localhost:3000',
+  // @ts-ignore
+  apiBaseUrl: API_BASE_URL || 'http://localhost:3000',
 }
