@@ -2,6 +2,7 @@ import { createArray } from './array-server-interaction';
 import { CreateFormDTO } from './array-server-interaction/interfaces';
 import { createLoadingButton } from './loading-button';
 import { snakeCaseToCamelCase } from './string';
+import { delay } from './delay';
 
 (document.querySelector('form') as HTMLElement).addEventListener('submit', async (e) => {
   e.preventDefault()
@@ -19,7 +20,11 @@ import { snakeCaseToCamelCase } from './string';
 
   loadingButton.setLoading();
 
-  await createArray(formValues);
+  // wait at least one second to prevent the button flickering if the response from the server is almost instant
+  await Promise.all([
+    createArray(formValues),
+    delay(500)
+  ]);
 
   loadingButton.setLoadingFinished();
 })

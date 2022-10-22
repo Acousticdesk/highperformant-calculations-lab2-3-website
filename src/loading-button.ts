@@ -15,8 +15,8 @@ export function createLoadingButton(buttonSelector: string) {
       buttonElement.textContent = `${buttonElement.textContent}ing...`;
     },
     setLoadingFinished() {
-      buttonElement.disabled = true;
-      buttonElement.textContent?.replace('ing...', '');
+      buttonElement.disabled = false;
+      buttonElement.textContent = (buttonElement.textContent as string).replace('ing...', '');
     }
   }
 }
