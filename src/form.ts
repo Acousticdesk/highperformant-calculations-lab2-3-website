@@ -4,6 +4,14 @@ import { createLoadingButton } from './loading-button';
 import { snakeCaseToCamelCase } from './string';
 import { delay } from './delay';
 import { createLoader } from './loader';
+import formPersistor from './form-persistor';
+
+const FORM_PREFIX = 'array_parameters_';
+
+// hydrate form values
+document.addEventListener('DOMContentLoaded', () => {
+  formPersistor.hydrateForm(FORM_PREFIX);
+});
 
 (document.querySelector('form') as HTMLElement).addEventListener('submit', async (e) => {
   e.preventDefault()
@@ -28,6 +36,8 @@ import { createLoader } from './loader';
     createArray(formValues).then(res => res.json()),
     delay(500)
   ]);
+
+  formPersistor.saveFormValuesToStorage(formValues);
 
   loader.setLoadingFinished();
   loadingButton.setLoadingFinished();
