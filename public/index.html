@@ -37,6 +37,11 @@
                     <h1 class="mt-5">Create Array Now</h1>
                     <p>Just fill in the parameters, click submit and wait for the server to do it's magic 🪄</p>
                 </div>
+                <div hidden id="array_result">
+                    <code id="array_container"></code>
+                    <span id="copy_array" class="badge bg-secondary ms-2">Copy</span>
+                </div>
+                <div hidden id="array_result_loader">Loading...</div>
                 <form class="mt-4 array-parameters-form" data-form-prefix="array_parameters_">
                     <fieldset>
                         <legend>Array Parameters</legend>

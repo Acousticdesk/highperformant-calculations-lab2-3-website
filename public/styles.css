@@ -18,3 +18,11 @@ footer {
 .array-parameters-form input[type="number"] {
     width: 100px;
 }
+
+#array_result {
+    display: inline-block;
+}
+
+#array_container {
+    word-break: break-word;
+}

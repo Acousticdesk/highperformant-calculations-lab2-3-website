@@ -3,3 +3,4 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './routes';
 import './copyright';
 import './form'
+import './copy-button'

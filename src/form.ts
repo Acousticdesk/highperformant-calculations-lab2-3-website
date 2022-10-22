@@ -3,6 +3,7 @@ import { CreateFormDTO } from './array-server-interaction/interfaces';
 import { createLoadingButton } from './loading-button';
 import { snakeCaseToCamelCase } from './string';
 import { delay } from './delay';
+import { createLoader } from './loader';
 
 (document.querySelector('form') as HTMLElement).addEventListener('submit', async (e) => {
   e.preventDefault()
@@ -17,14 +18,22 @@ import { delay } from './delay';
   })) as unknown as CreateFormDTO;
 
   const loadingButton = createLoadingButton('#submit_btn');
+  const loader = createLoader('#array_result_loader');
 
+  loader.setLoading();
   loadingButton.setLoading();
 
   // wait at least one second to prevent the button flickering if the response from the server is almost instant
-  await Promise.all([
-    createArray(formValues),
+  const [response] = await Promise.all([
+    createArray(formValues).then(res => res.json()),
     delay(500)
   ]);
 
+  loader.setLoadingFinished();
   loadingButton.setLoadingFinished();
+
+  const arrayResultElement = document.getElementById('array_result') as HTMLElement;
+
+  arrayResultElement.hidden = false;
+  (arrayResultElement.querySelector('code') as HTMLElement).textContent = response.body.toString();
 })
